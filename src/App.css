@@ -1,19 +1,6 @@
-.App {
-  text-align: center;
-}
-.App-logo {
-  height: 10vmin;
-}
-.tic-tac-toe {
-  width: 150px;
-  height: 150px;
-  border: 2px solid black;
-  margin: 50px auto;
-}
-.qqq-grid {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  float: left;
+* {
+  font-family: 'Oi', cursive;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
