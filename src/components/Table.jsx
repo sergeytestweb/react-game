@@ -1,23 +1,27 @@
-import React, { Component } from 'react'
 
-class Table extends Component {
-   constructor(props) {
-      super(props) 
-         students: [
-            { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
-            { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
-            { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
-            { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
-         ]
-      }
-
-   render() {
-      return (
-         <div>
-            <h1>Table of result</h1>
-         </div>
-      )
-   }
+const Table = () => {
+   const data = JSON.parse(localStorage.getItem('stat'))
+   return (
+      <div style={{marginLeft: "35px", display: "flex"}}>
+         <ol className="table__win">
+            {Array.isArray(data) ?
+               data.map((item, index) => {
+                  return (
+                  <li key={index} style={{color: "white"}}>winner {item.winner}</li>
+                  )
+               }) : 'no data'
+            }
+         </ol>
+         <ol className="table__win" style={{listStyleType: 'none', marginLeft: '20px'}}>
+            {Array.isArray(data) ?
+               data.map((item, index) => {
+                  return (
+                  <li key={index} style={{color: "white"}}> {item.date}</li>
+                  )
+               }) : 'no data'
+            }
+         </ol>
+      </div>
+   )
 }
-
 export default Table

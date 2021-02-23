@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 .start_btn {
-    width: 150px;
+    width: 100px;
     height: 35px;
     margin-bottom: 25px;
     cursor: pointer;
@@ -27,4 +27,19 @@
     margin: 25px;
     font-size: 35px;
     color: white;
+}
+.rain__bow {
+    width: 200px;
+    height: 200px;
+}
+.autoplay_btn {
+    width: 100px;
+    height: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    background: black;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
 }
