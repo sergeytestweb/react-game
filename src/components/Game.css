@@ -43,3 +43,25 @@
     border: 1px solid whitesmoke;
     border-radius: 5px;
 }
+.autoplay_btn:hover {
+    background: white;
+    color: black;
+    transition: .3 all ease;
+}
+
+.clear_stats {
+    width: 100px;
+    height: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    background: black;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+}
+.clear_stats:hover {
+    background: white;
+    color: black;
+    transition: .3 all ease;
+}

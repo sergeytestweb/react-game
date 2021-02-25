@@ -6,10 +6,13 @@ import "./Game.css";
 import AudioPlayer from "./AudioPlayer";
 import Rainbow from "../assets/mp3/img/rainbow.gif";
 import Table from "./Table";
+import Footer from "./Footer"
 
 const Game = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setIsNext] = useState(true);
+  const [localData, setLocalData] = useState([])
+  const [isAutoplay, setIsAutoplay] = useState(false)
   const winner = calculateWinner(board);
 
   useEffect(() => {
@@ -28,15 +31,30 @@ const Game = () => {
         );
       }
     }
-  }, [winner])
+    setLocalData(data)
+  }, [winner]);
 
   const handleClick = (index) => {
+      console.log('call');
     const boardCopy = [...board];
     if (winner || boardCopy[index]) return;
-    boardCopy[index] = xIsNext ? "x" : "o";
-    setBoard(boardCopy);
+    boardCopy[index] = xIsNext ? "X" : "O";
     setIsNext(!xIsNext);
+    setBoard(boardCopy);
   };
+
+  useEffect(() => {
+      console.log(Math.floor(Math.random() * (8) + 0))
+      let autoPlay;
+      if (isAutoplay) {
+          autoPlay = setInterval(() => {
+              console.log('interval')
+            handleClick(Math.floor(Math.random() * (8) + 0))
+            setIsNext(!xIsNext);
+          }, 1000)
+      }
+      return () => clearInterval(autoPlay)
+}, [isAutoplay])
 
   const startNewGame = () => {
     return (
@@ -48,17 +66,21 @@ const Game = () => {
       </button>
     );
   };
-  const autoPlay = () => {
-    return <button className="autoplay_btn">autoplay</button>;
-  };
 
+  const clearLocalStorage = () => {
+      setLocalData([])
+      localStorage.clear()
+  }
+  
   return (
     <div className="wrapper">
       <div>
         {startNewGame()}
-        {autoPlay()}
+        <button onClick={() => clearLocalStorage()} className="clear_stats">Clear stats</button>
+        <button onClick={() => setIsAutoplay(!isAutoplay)} className="autoplay_btn">autoplay</button>
+        
         <p className="game__info">
-          {winner ? "Won is " + winner : "walks now - " + (xIsNext ? "X" : "O")}
+          {winner ? "Won - " + winner : "walks now - " + (xIsNext ? "X" : "O")}
         </p>
         {winner ? (
           <div>
@@ -67,12 +89,13 @@ const Game = () => {
         ) : (
           <div>
             <AudioPlayer />
-            <div style={{ display: "flex"}}>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
               <Board squares={board} click={handleClick} />
-              <Table />
+              <Table localData={localData}/>
             </div>
           </div>
         )}
+        {Footer()}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 
-const Table = () => {
-   const data = JSON.parse(localStorage.getItem('stat'))
+const Table = (props) => {
+   const data = props.localData
    return (
       <div style={{marginLeft: "35px", display: "flex"}}>
          <ol className="table__win">
