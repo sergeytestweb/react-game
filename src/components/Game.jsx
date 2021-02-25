@@ -76,11 +76,11 @@ const Game = () => {
     <div className="wrapper">
       <div>
         {startNewGame()}
-        <button onClick={() => clearLocalStorage()} className="clear_stats">Clear stats</button>
+        <button onClick={() => clearLocalStorage()} className="clear_stats">clear stats</button>
         <button onClick={() => setIsAutoplay(!isAutoplay)} className="autoplay_btn">autoplay</button>
         
         <p className="game__info">
-          {winner ? "Won - " + winner : "walks now - " + (xIsNext ? "X" : "O")}
+          {winner ? "Won - " + winner : "takes turn now - " + (xIsNext ? "X" : "O")}
         </p>
         {winner ? (
           <div>
