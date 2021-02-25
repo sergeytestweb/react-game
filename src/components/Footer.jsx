@@ -6,7 +6,7 @@ const footer = () => {
         <div>
             <a target="_blank" href="https://github.com/sergeytestweb" style={{color: 'black'}}>Created by sergeytestweb 2k21
             </a>
-            <a target="_blank" href="https://rs.school/js/"><img width="55" src="https://rs.school/images/rs_school_js.svg" alt="rss" style={{marginLeft: "45px", marginTop: "5px"}}/>
+            <a target="_blank" href="https://rs.school/js/"><img width="55" src="https://rs.school/images/rs_school_js.svg" alt="rss" style={{marginLeft: "25px", marginTop: "5px"}}/>
             </a>
         </div>
     </div>
