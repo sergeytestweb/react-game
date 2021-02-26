@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import Board from "./Board";
 import { calculateWinner } from "../helper";
 import "./Game.css";
-import AudioPlayer from "./AudioPlayer";
+// import AudioPlayer from "./AudioPlayer";
 import Rainbow from "../assets/mp3/img/rainbow.gif";
 import Table from "./Table";
 import Footer from "./Footer"
+import { useHotkeys } from "react-hotkeys-hook"
 
 const Game = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -66,12 +67,15 @@ const Game = () => {
       </button>
     );
   };
+  useHotkeys("n", () => setBoard(Array(9).fill(null)))
 
   const clearLocalStorage = () => {
       setLocalData([])
       localStorage.clear()
   }
-  
+  useHotkeys("c", clearLocalStorage)
+  useHotkeys("a", () => setIsAutoplay(!isAutoplay))
+
   return (
     <div className="wrapper">
       <div>
@@ -88,13 +92,23 @@ const Game = () => {
           </div>
         ) : (
           <div>
-            <AudioPlayer />
+            {/* <AudioPlayer /> */}
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               <Board squares={board} click={handleClick} />
               <Table localData={localData}/>
             </div>
           </div>
         )}
+        <div className="hot__keys">
+         <p>
+            hot keys: <br/>
+            n - new game,
+            c - clear stats,
+            a - autoplay<br/>
+            z - on/off sound,
+            x - on/off music
+        </p>
+        </div>
         {Footer()}
       </div>
     </div>

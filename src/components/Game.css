@@ -65,3 +65,6 @@
     color: black;
     transition: .3 all ease;
 }
+.hot__keys {
+    color: white;
+}
