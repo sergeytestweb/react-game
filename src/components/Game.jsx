@@ -8,6 +8,10 @@ import Rainbow from "../assets/mp3/img/rainbow.gif";
 import Table from "./Table";
 import Footer from "./Footer"
 import { useHotkeys } from "react-hotkeys-hook"
+import SettingPanel from "../components/SettingsPanel/SettingsPanel"
+import useSound from "use-sound"
+import clickSound from "../assets/mp3/zvuk_move.mp3"
+
 
 const Game = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -15,6 +19,8 @@ const Game = () => {
   const [localData, setLocalData] = useState([])
   const [isAutoplay, setIsAutoplay] = useState(false)
   const winner = calculateWinner(board);
+   const [ volume, setVolume ] = useState(1)
+ const [ play ] = useSound(clickSound, {volume})
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("stat"));
@@ -42,6 +48,7 @@ const Game = () => {
     boardCopy[index] = xIsNext ? "X" : "O";
     setIsNext(!xIsNext);
     setBoard(boardCopy);
+    play({volume});
   };
 
   useEffect(() => {
@@ -75,9 +82,11 @@ const Game = () => {
   }
   useHotkeys("c", clearLocalStorage)
   useHotkeys("a", () => setIsAutoplay(!isAutoplay))
+  useHotkeys("z", () => setVolume(0))
 
   return (
     <div className="wrapper">
+    < SettingPanel />
       <div>
         {startNewGame()}
         <button onClick={() => clearLocalStorage()} className="clear_stats">clear stats</button>
@@ -101,12 +110,12 @@ const Game = () => {
         )}
         <div className="hot__keys">
          <p>
-            hot keys: <br/>
+            hotkeys: <br/>
             n - new game,
             c - clear stats,
             a - autoplay<br/>
-            z - on/off sound,
-            x - on/off music
+            z - off sound,
+            m - off music
         </p>
         </div>
         {Footer()}
