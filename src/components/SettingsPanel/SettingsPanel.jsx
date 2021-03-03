@@ -5,6 +5,7 @@ import { Range, getTrackBackground } from "react-range";
 import { useHotkeys } from "react-hotkeys-hook";
 import phoneSound from "../../assets/mp3/bgMusic.mp3";
 import volume from "../../assets/mp3/img/volume.svg";
+import fullscreenSvg from "../../assets/mp3/img/fullscreen.svg";
 
 const STEP = 0.1;
 const MIN = 0;
@@ -108,9 +109,25 @@ const Volume = () => {
 };
 
 const SettingsPanel = () => {
+  const [fullscreen, setFullscreen] = useState(false)
+
+  const toggleFullscreen = () => {
+    setFullscreen(!fullscreen)
+    if (!fullscreen) {
+      document.documentElement.requestFullscreen()
+    } else {
+      document.exitFullscreen()
+    }
+  }
+
   return (
     <div className="settings__panel">
-      <Volume />
+      <div className="settings__panel--volume">
+        <Volume />
+      </div>
+      <div className="fullscreen" onClick={() => toggleFullscreen()}>
+        <img width="30px" src={fullscreenSvg} alt="fullscreen"/>
+      </div>
     </div>
   );
 };

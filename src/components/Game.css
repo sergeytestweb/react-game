@@ -24,7 +24,7 @@
     transition: .3 all ease;
 }
 .game__info {
-    margin: 25px;
+    margin: 25px 0;
     font-size: 35px;
     color: white;
 }
