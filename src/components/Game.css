@@ -1,0 +1,70 @@
+.wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.start_btn {
+    width: 100px;
+    height: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    background: black;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+}
+.start_btn:hover {
+    background: white;
+    color: black;
+    transition: .3 all ease;
+}
+.game__info {
+    margin: 25px 0;
+    font-size: 35px;
+    color: white;
+}
+.rain__bow {
+    width: 200px;
+    height: 200px;
+}
+.autoplay_btn {
+    width: 100px;
+    height: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    background: black;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+}
+.autoplay_btn:hover {
+    background: white;
+    color: black;
+    transition: .3 all ease;
+}
+
+.clear_stats {
+    width: 100px;
+    height: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    background: black;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+}
+.clear_stats:hover {
+    background: white;
+    color: black;
+    transition: .3 all ease;
+}
+.hot__keys {
+    color: white;
+}
